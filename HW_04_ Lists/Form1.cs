@@ -37,12 +37,9 @@ namespace HW_04__Lists
         private void button2_Click(object sender, EventArgs e)
         {
             Person? item = listBox1.SelectedItem as Person;
-            DateTime s=DateTime.Now;
-            Person person = new Person("name", "namel", "UA", s, "Male");
-            if (item!= null )
+            if (item != null)
             {
                 MessageBox.Show(item.GetInfo());
-                listBox1.SelectedItem = person;
             }
             else
             {
