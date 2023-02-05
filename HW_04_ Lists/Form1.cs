@@ -2,8 +2,6 @@ namespace HW_04__Lists
 {
     public partial class Form1 : Form
     {
-        private List<Person> persons = new List<Person>();
-        private int id = 1;
         public Form1()
         {
             InitializeComponent();
@@ -13,18 +11,16 @@ namespace HW_04__Lists
         {
             try
             {
-                if (textBox1.Text=="" || textBox2.Text == "" || textBox3.Text == "" || comboBox1.Text=="")
+                if (textBox1.Text == "" || textBox2.Text == "" || textBox3.Text == "" || comboBox1.Text == "")
                 {
-                    MessageBox.Show("Не залишайте поле пустим!","Помилка",MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Не залишайте поле пустим!", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
                 {
                     Person person = new Person(textBox1.Text, textBox2.Text, textBox3.Text, dateTimePicker1.Value, comboBox1.Text);
-                    persons.Add(person);
-                    listBox1.Items.Add($"{id},{person.Name},{person.Last_Name}");
-                    id++;
+                    listBox1.Items.Add(person);
                 }
-                
+
             }
             catch (Exception ex)
             {
@@ -40,17 +36,17 @@ namespace HW_04__Lists
 
         private void button2_Click(object sender, EventArgs e)
         {
-            string name = listBox1.SelectedItem.ToString();
-            string[] v = name.Split(',');
-            int i = 1;
-            foreach (Person s in persons)
+            Person? item = listBox1.SelectedItem as Person;
+            DateTime s=DateTime.Now;
+            Person person = new Person("name", "namel", "UA", s, "Male");
+            if (item!= null )
             {
-               
-                if (i == Convert.ToInt32(v[0]) && s.Name == v[1])
-                {
-                    MessageBox.Show(s.GetAllInfo());
-                }
-                i++;
+                MessageBox.Show(item.GetInfo());
+                listBox1.SelectedItem = person;
+            }
+            else
+            {
+                MessageBox.Show("Виберіть елемент з списку", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }
