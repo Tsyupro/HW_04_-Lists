@@ -41,5 +41,18 @@ namespace HW_04__Lists
                 MessageBox.Show("Виберіть елемент з списку", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            if (listBox1.SelectedItem != null)
+            {
+                int index = listBox1.SelectedIndex;
+                listBox1.Items.RemoveAt(index);
+            }
+            else
+            {
+                MessageBox.Show("Виберіть елемент!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }
